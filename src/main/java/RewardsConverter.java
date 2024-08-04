@@ -13,8 +13,22 @@ public class RewardsConverter {
             System.out.println("Could not parse input value as a double, exiting");
             return;
         }
-        System.out.println("converting $" + input_value + " to miles");
+        System.out.println("Converting $" + input_value + " to miles");
         var rewardsValue = new RewardValue(cashValue);
         System.out.println("$" + input_value + " is worth " + rewardsValue.getMilesValue() + " miles");
+
+        // Demonstrate conversion from miles to cash
+        System.out.println("Please enter a miles value to convert to cash: ");
+        input_value = scanner.nextLine();
+        double milesValue;
+        try {
+            milesValue = Double.parseDouble(input_value);
+        } catch (NumberFormatException exception) {
+            System.out.println("Could not parse input value as a double, exiting");
+            return;
+        }
+        System.out.println("Converting " + input_value + " miles to cash");
+        rewardsValue = new RewardValue(milesValue, true);
+        System.out.println(input_value + " miles is worth $" + rewardsValue.getCashValue());
     }
 }
